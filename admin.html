@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Labinitial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X37MJ4VHJM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X37MJ4VHJM');
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Admin Header -->
+    <header class="bg-gray-800 text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl font-bold">Labinitial Admin</h1>
+                    <span class="text-gray-300 text-sm">User Data Dashboard</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition duration-200">
+                        Back to Website
+                    </a>
+                    <button onclick="logout()" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg transition duration-200">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Dashboard -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Dashboard Stats -->
+        <div class="grid md:grid-cols-3 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="text-3xl font-bold text-green-600" id="contactsCount">0</div>
+                <div class="text-gray-600 font-medium mt-2">Contact Form Submissions</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="text-3xl font-bold text-orange-600" id="paymentsCount">0</div>
+                <div class="text-gray-600 font-medium mt-2">Payment Requests</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-6 text-center">
+                <div class="text-3xl font-bold text-purple-600" id="chatCount">0</div>
+                <div class="text-gray-600 font-medium mt-2">Chat Questions</div>
+            </div>
+        </div>
+
+        <!-- Contact Form Submissions -->
+        <div class="bg-white rounded-xl shadow-lg mb-8">
+            <div class="bg-gray-50 px-6 py-4 border-b rounded-t-xl">
+                <h3 class="text-xl font-bold text-gray-900">Contact Form Submissions</h3>
+                <p class="text-gray-600 text-sm mt-1">All user inquiries from the contact form</p>
+            </div>
+            <div class="p-6">
+                <div id="contactsTable" class="overflow-x-auto">
+                    <div class="text-center py-8">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                        <p class="text-gray-600 mt-2">Loading contact data...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Requests -->
+        <div class="bg-white rounded-xl shadow-lg mb-8">
+            <div class="bg-gray-50 px-6 py-4 border-b rounded-t-xl">
+                <h3 class="text-xl font-bold text-gray-900">Payment Requests</h3>
+                <p class="text-gray-600 text-sm mt-1">All payment attempts and requests</p>
+            </div>
+            <div class="p-6">
+                <div id="paymentsTable" class="overflow-x-auto">
+                    <div class="text-center py-8">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                        <p class="text-gray-600 mt-2">Loading payment data...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Questions -->
+        <div class="bg-white rounded-xl shadow-lg">
+            <div class="bg-gray-50 px-6 py-4 border-b rounded-t-xl">
+                <h3 class="text-xl font-bold text-gray-900">Chat Questions</h3>
+                <p class="text-gray-600 text-sm mt-1">All questions asked in the AI chat</p>
+            </div>
+            <div class="p-6">
+                <div id="chatTable" class="overflow-x-auto">
+                    <div class="text-center py-8">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                        <p class="text-gray-600 mt-2">Loading chat data...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase and Admin Script -->
+    <script>
+        // Firebase configuration for labinitial project
+        const firebaseConfig = {
+            apiKey: "AIzaSyDe_mslBHsRHoUT5PElylCl0oI5VGuIy-w",
+            authDomain: "labinitial-8eed5.firebaseapp.com",
+            projectId: "labinitial-8eed5",
+            storageBucket: "labinitial-8eed5.firebasestorage.app",
+            messagingSenderId: "148420383071",
+            appId: "1:148420383071:web:a046c99b6a38ece80de6ea"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Check if user is authenticated
+        function checkAuth() {
+            const isAuthenticated = sessionStorage.getItem('adminAuthenticated');
+            if (!isAuthenticated || isAuthenticated !== 'true') {
+                window.location.href = 'index.html';
+                return false;
+            }
+            return true;
+        }
+
+        // Logout function
+        function logout() {
+            sessionStorage.removeItem('adminAuthenticated');
+            window.location.href = 'index.html';
+        }
+
+        // Load all user data
+        async function loadUserData() {
+            if (!checkAuth()) return;
+
+            try {
+                // Load contact form submissions
+                const contactsSnapshot = await db.collection('contacts').orderBy('timestamp', 'desc').get();
+                const contactsData = contactsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                
+                // Load payment requests
+                const paymentsSnapshot = await db.collection('paymentRequests').orderBy('timestamp', 'desc').get();
+                const paymentsData = paymentsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                
+                // Load chat questions
+                const chatSnapshot = await db.collection('chatQuestions').orderBy('timestamp', 'desc').get();
+                const chatData = chatSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+                // Update counts
+                document.getElementById('contactsCount').textContent = contactsData.length;
+                document.getElementById('paymentsCount').textContent = paymentsData.length;
+                document.getElementById('chatCount').textContent = chatData.length;
+
+                // Update tables
+                updateContactsTable(contactsData);
+                updatePaymentsTable(paymentsData);
+                updateChatTable(chatData);
+
+            } catch (error) {
+                console.error('Error loading admin data:', error);
+                showError('Error loading data. Please refresh the page.');
+            }
+        }
+
+        // Update contacts table
+        function updateContactsTable(contacts) {
+            const tableContainer = document.getElementById('contactsTable');
+            
+            if (contacts.length === 0) {
+                tableContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                        <p class="text-gray-500">No contact form submissions yet.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            tableContainer.innerHTML = `
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Message</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        ${contacts.map(contact => `
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${contact.name}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <a href="mailto:${contact.email}" class="text-blue-600 hover:text-blue-800">${contact.email}</a>
+                                </td>
+                                <td class="px-6 py-4 text-sm text-gray-500 max-w-xs">${contact.message}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${contact.timestamp ? new Date(contact.timestamp.toDate()).toLocaleString() : 'N/A'}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Update payments table
+        function updatePaymentsTable(payments) {
+            const tableContainer = document.getElementById('paymentsTable');
+            
+            if (payments.length === 0) {
+                tableContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                        <p class="text-gray-500">No payment requests yet.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            tableContainer.innerHTML = `
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        ${payments.map(payment => `
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">$${payment.amount}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${payment.projectReference}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                    <a href="mailto:${payment.email}" class="text-blue-600 hover:text-blue-800">${payment.email}</a>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${payment.status === 'pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'}">
+                                        ${payment.status || 'pending'}
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${payment.timestamp ? new Date(payment.timestamp.toDate()).toLocaleString() : 'N/A'}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Update chat table
+        function updateChatTable(chatData) {
+            const tableContainer = document.getElementById('chatTable');
+            
+            if (chatData.length === 0) {
+                tableContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                        </svg>
+                        <p class="text-gray-500">No chat questions yet.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            tableContainer.innerHTML = `
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Question</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        ${chatData.map(chat => `
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 text-sm text-gray-500">${chat.question}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${chat.timestamp ? new Date(chat.timestamp.toDate()).toLocaleString() : 'N/A'}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Show error message
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'bg-red-50 border border-red-200 rounded-lg p-4 mb-6';
+            errorDiv.innerHTML = `
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                    </svg>
+                    <span class="text-red-800 font-medium">${message}</span>
+                </div>
+            `;
+            document.querySelector('.max-w-7xl').insertBefore(errorDiv, document.querySelector('.grid.md\\:grid-cols-3'));
+        }
+
+        // Initialize admin dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            if (checkAuth()) {
+                loadUserData();
+            }
+        });
+    </script>
+</body>
+</html>
