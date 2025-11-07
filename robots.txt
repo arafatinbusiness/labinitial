@@ -1,0 +1,73 @@
+# Labinitial - Software Development Company
+# Robots.txt file for search engine optimization
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://labinitial.com/sitemap.xml
+
+# Allow all major search engine crawlers
+User-agent: Googlebot
+Allow: /
+Disallow: /admin.html
+Disallow: /functions/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin.html
+Disallow: /functions/
+
+User-agent: Slurp
+Allow: /
+Disallow: /admin.html
+Disallow: /functions/
+
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /admin.html
+Disallow: /functions/
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /admin.html
+Disallow: /functions/
+
+User-agent: YandexBot
+Allow: /
+Disallow: /admin.html
+Disallow: /functions/
+
+# Disallow sensitive areas
+Disallow: /admin.html
+Disallow: /functions/
+Disallow: /popups/
+Disallow: /iframes/
+Disallow: /firebase.json
+Disallow: /firestore.indexes.json
+Disallow: /firestore.rules
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /trigger.txt
+
+# Allow crawling of all public pages
+Allow: /index.html
+Allow: /contact.html
+Allow: /about.html
+Allow: /payments.html
+Allow: /admin.html
+Allow: /mobile-app-screenshots.html
+Allow: /video-demo.html
+Allow: /blue-mark-demo.html
+
+# Allow crawling of public assets
+Allow: /public/
+
+# Crawl delay (optional - adjust based on server capacity)
+# Crawl-delay: 1
+
+# Clean URLs (if using URL rewriting)
+# Allow: /services/
+# Allow: /about/
+# Allow: /contact/
+# Allow: /payments/
