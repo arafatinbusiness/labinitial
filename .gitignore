@@ -44,6 +44,10 @@ bower_components
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
+
+public/output.css
+
+
 # Dependency directories
 node_modules/
 
@@ -67,3 +71,5 @@ node_modules/
 
 # dataconnect generated files
 .dataconnect
+
+
