@@ -1,10 +1,4 @@
 {
-  "builds": [
-    {
-      "src": "*.html",
-      "use": "@vercel/static"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -17,4 +11,3 @@
     }
   ]
 }
-
