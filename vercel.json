@@ -1,4 +1,17 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.labinitial.com"
+        }
+      ],
+      "destination": "https://labinitial.com/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
