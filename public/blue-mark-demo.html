@@ -52,6 +52,47 @@
     <link rel="canonical" href="https://labinitial.com/blue-mark-demo.html">
 
     <link href="output.css" rel="stylesheet">
+    <!-- Dropdown Menu Fix -->
+    <style>
+        /* Fix for dropdown menu gap issue */
+        .dropdown-container {
+            position: relative;
+        }
+        
+        .dropdown-container .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+        
+        .dropdown-container:hover .dropdown-menu,
+        .dropdown-container .dropdown-menu:hover {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            transition-delay: 0.1s;
+        }
+        
+        /* Add invisible padding between button and dropdown */
+        .dropdown-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+            z-index: 49;
+        }
+        
+        /* Ensure dropdown stays visible when hovering over it */
+        .dropdown-menu {
+            margin-top: 8px !important;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -62,10 +103,26 @@
                     <a href="index.html" class="text-2xl font-bold text-gray-900 hover:text-blue-600 transition duration-200">Labinitial</a>
                     <span class="ml-2 text-sm text-gray-500 font-medium">Software Development Company</span>
                 </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-gray-600 hover:text-gray-900">Home</a>
-                    <a href="about.html" class="text-gray-600 hover:text-gray-900">About</a>
-                    <a href="payments.html" class="text-gray-600 hover:text-gray-900">Pay</a>
+                                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition duration-200">Services</a>
+                    <a href="journals.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Journals</a>
+                    <div class="relative group dropdown-container">
+                        <button class="text-gray-600 hover:text-gray-900 transition duration-200 flex items-center">
+                            Softwares
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-50 dropdown-menu">
+                            <a href="https://easypos.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Labinitial POS</a>
+                            <a href="https://dredgerapp.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Dredger Accounting Software</a>
+                            <a href="https://quicksell.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">QuickSell</a>
+</div>
+                    </div>
+                    <a href="about.html" class="text-gray-600 hover:text-gray-900 transition duration-200">About</a>
+                    <a href="payments.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Pay</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Contact</a>
+                    <button onclick="openAdminPanel()" class="text-gray-600 hover:text-gray-900 transition duration-200">Admin</button>
                 </nav>
             </div>
         </div>

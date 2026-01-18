@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Sitemap location
+# Sitemap location - Canonical version only
 Sitemap: https://labinitial.com/sitemap.xml
 
 # Disallow admin and sensitive areas

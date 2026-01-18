@@ -32,6 +32,65 @@
         gtag('js', new Date());
         gtag('config', 'G-X37MJ4VHJM');
     </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1991033075089238');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1991033075089238&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <!-- Dropdown Menu Fix -->
+    <style>
+        /* Fix for dropdown menu gap issue */
+        .dropdown-container {
+            position: relative;
+        }
+        
+        .dropdown-container .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+        
+        .dropdown-container:hover .dropdown-menu,
+        .dropdown-container .dropdown-menu:hover {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            transition-delay: 0.1s;
+        }
+        
+        /* Add invisible padding between button and dropdown */
+        .dropdown-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+            z-index: 49;
+        }
+        
+        /* Ensure dropdown stays visible when hovering over it */
+        .dropdown-menu {
+            margin-top: 8px !important;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
@@ -53,6 +112,20 @@
                 <!-- Desktop Navigation -->
                 <nav class="hidden md:flex space-x-8">
                     <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition duration-200">Services</a>
+                    <a href="journals.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Journals</a>
+                    <div class="relative group dropdown-container">
+                        <button class="text-gray-600 hover:text-gray-900 transition duration-200 flex items-center">
+                            Softwares
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-50 dropdown-menu">
+                            <a href="https://easypos.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Labinitial POS</a>
+                            <a href="https://dredgerapp.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Dredger Accounting Software</a>
+                            <a href="https://quicksell.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">QuickSell</a>
+</div>
+                    </div>
                     <a href="about.html" class="text-gray-600 hover:text-gray-900 transition duration-200">About</a>
                     <a href="payments.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Pay</a>
                     <a href="contact.html" class="text-blue-600 font-semibold transition duration-200">Contact</a>
@@ -64,6 +137,15 @@
             <div id="mobileMenu" class="md:hidden hidden bg-white border-t border-gray-200 py-4">
                 <div class="flex flex-col space-y-4 px-4">
                     <a href="index.html#services" class="text-gray-600 hover:text-gray-900 py-2 transition duration-200">Services</a>
+                    <a href="journals.html" class="text-gray-600 hover:text-gray-900 py-2 transition duration-200">Journals</a>
+                    <div class="border-t border-gray-200 pt-2">
+                        <div class="font-medium text-gray-700 py-2">Softwares</div>
+                        <div class="pl-4">
+                            <a href="https://easypos.labinitial.com" target="_blank" class="block text-gray-600 hover:text-gray-900 py-2 transition duration-200">Labinitial POS</a>
+                            <a href="https://dredgerapp.labinitial.com" target="_blank" class="block text-gray-600 hover:text-gray-900 py-2 transition duration-200">Dredger Accounting Software</a>
+                            <a href="https://quicksell.labinitial.com" target="_blank" class="block text-gray-600 hover:text-gray-900 py-2 transition duration-200">QuickSell</a>
+</div>
+                    </div>
                     <a href="about.html" class="text-gray-600 hover:text-gray-900 py-2 transition duration-200">About</a>
                     <a href="payments.html" class="text-gray-600 hover:text-gray-900 py-2 transition duration-200">Pay</a>
                     <a href="contact.html" class="text-blue-600 font-semibold py-2 transition duration-200">Contact</a>

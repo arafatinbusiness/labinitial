@@ -12,8 +12,8 @@
     "tailwindcss": "^3.4.4"
   },
   "scripts": {
-    "build": "tailwindcss -i ./css/input.css -o ./public/output.css && cp *.html sitemap.xml robots.txt public/",
-    "dev": "tailwindcss -i ./css/input.css -o ./public/output.css --watch"
+    "build": "tailwindcss -i ./css/input.css -o ./output.css && cp output.css public/ && cp *.html sitemap.xml robots.txt public/",
+    "dev": "tailwindcss -i ./css/input.css -o ./output.css --watch"
   },
   "repository": {
     "type": "git",
