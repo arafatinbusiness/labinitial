@@ -1,4 +1,4 @@
-# Labinitial - Software Development Company Website
+# Labinitial - Your Shopify Developer Website
 
 ## Google Search Console Redirect Issue Fix
 

@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- SEO Meta Tags -->
-    <title>Labinitial: Software Development Company - Web & Mobile Apps</title>
-    <meta name="description" content="Software development company building custom web and mobile apps for American businesses. ">
+    <title>Labinitial: Your Shopify Developer - Web & Mobile Apps</title>
+    <meta name="description" content="Your Shopify Developer building custom web and mobile apps for American businesses. ">
    
     <meta name="author" content="Labinitial">
     
     <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="Labinitial: Software Development for US Businesses">
-    <meta property="og:description" content="Software development company building custom web and mobile apps for American businesses.">
+    <meta property="og:description" content="Your Shopify Developer building custom web and mobile apps for American businesses.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://labinitial.com">
     <meta property="og:image" content="https://labinitial.com/og-image.jpg">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Labinitial: Software Development Company">
+    <meta name="twitter:title" content="Labinitial: Your Shopify Developer">
     <meta name="twitter:description" content="We develop custom software, web, and mobile apps that solve real business problems.">
     <meta name="twitter:image" content="https://labinitial.com/twitter-image.jpg">
     
@@ -34,7 +34,7 @@
           "name": "Labinitial",
           "url": "https://labinitial.com",
           "logo": "https://labinitial.com/logo.png",
-          "description": "Software Development Company specializing in custom web and mobile applications for US businesses",
+          "description": "Your Shopify Developer specializing in custom web and mobile applications for US businesses",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Dhaka",
@@ -57,7 +57,7 @@
           "@id": "https://labinitial.com/#website",
           "url": "https://labinitial.com",
           "name": "Labinitial",
-          "description": "Software Development Company - Web & Mobile Apps",
+          "description": "Your Shopify Developer - Web & Mobile Apps",
           "publisher": {
             "@id": "https://labinitial.com/#organization"
           }
@@ -66,8 +66,8 @@
           "@type": "WebPage",
           "@id": "https://labinitial.com/#webpage",
           "url": "https://labinitial.com",
-          "name": "Labinitial: Software Development Company - Web & Mobile Apps",
-          "description": "Software development company building custom web and mobile apps for American businesses with global expertise",
+          "name": "Labinitial: Your Shopify Developer - Web & Mobile Apps",
+          "description": "Your Shopify Developer building custom web and mobile apps for American businesses with global expertise",
           "isPartOf": {
             "@id": "https://labinitial.com/#website"
           },
@@ -287,7 +287,7 @@
             <div class="flex justify-between items-center py-4 md:py-6">
                 <div class="flex items-center">
                     <h1 class="text-xl md:text-2xl font-bold text-gray-900">Labinitial</h1>
-                    <span class="ml-2 text-xs md:text-sm text-gray-500 font-medium hidden sm:inline">Software Development Company</span>
+                    <span class="ml-2 text-xs md:text-sm text-gray-500 font-medium hidden sm:inline">Your Shopify Developer</span>
                 </div>
                 
                 <!-- Mobile Menu Button -->
@@ -1611,7 +1611,7 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; 2025 Labinitial - Software Development Company. All rights reserved.</p>
+            <p>&copy; 2025 Labinitial - Your Shopify Developer. All rights reserved.</p>
             <p class="mt-2 text-gray-400 text-sm">We develop custom software, web, and mobile apps that solve real business problems.</p>
         </div>
     </footer>
