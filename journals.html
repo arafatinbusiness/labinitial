@@ -15,7 +15,76 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <link rel="canonical" href="https://labinitial.com/journals.html">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X37MJ4VHJM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-X37MJ4VHJM');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1991033075089238');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1991033075089238&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <link href="/output.css" rel="stylesheet">
+    <!-- Dropdown Menu Fix -->
+    <style>
+        /* Fix for dropdown menu gap issue */
+        .dropdown-container {
+            position: relative;
+        }
+        
+        .dropdown-container .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+        
+        .dropdown-container:hover .dropdown-menu,
+        .dropdown-container .dropdown-menu:hover {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            transition-delay: 0.1s;
+        }
+        
+        /* Add invisible padding between button and dropdown */
+        .dropdown-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+            z-index: 49;
+        }
+        
+        /* Ensure dropdown stays visible when hovering over it */
+        .dropdown-menu {
+            margin-top: 8px !important;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
 <!-- Header -->
@@ -25,14 +94,28 @@
             <a href="/" class="flex items-center">
                 <h1 class="text-xl md:text-2xl font-bold text-gray-900">Labinitial</h1>
             </a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="/#services" class="text-gray-600 hover:text-gray-900 transition duration-200">Services</a>
-                <!-- Journals Link Added Here -->
-                <a href="journals.html" class="text-gray-600 hover:text-gray-900 transition duration-200 font-semibold">Journals</a>
-                <a href="about.html" class="text-gray-600 hover:text-gray-900 transition duration-200">About</a>
-                <a href="payments.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Pay</a>
-                <a href="contact.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Contact</a>
-            </nav>
+                            <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition duration-200">Services</a>
+                    <a href="journals.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Journals</a>
+                    <div class="relative group dropdown-container">
+                        <button class="text-gray-600 hover:text-gray-900 transition duration-200 flex items-center">
+                            Softwares
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-50 dropdown-menu">
+                            <a href="https://easypos.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Labinitial POS</a>
+                            <a href="https://dredgerapp.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Dredger Accounting Software</a>
+                            <a href="https://sellquick.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">SellQuick</a>
+                            <a href="https://quicksell.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">QuickSell</a>
+</div>
+                    </div>
+                    <a href="about.html" class="text-gray-600 hover:text-gray-900 transition duration-200">About</a>
+                    <a href="payments.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Pay</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Contact</a>
+                    <button onclick="openAdminPanel()" class="text-gray-600 hover:text-gray-900 transition duration-200">Admin</button>
+                </nav>
         </div>
     </div>
 </header>
@@ -64,6 +147,60 @@
                     </h3>
                     <p class="text-gray-600 text-base mb-4">
                         Discover the 10 common mistakes that cause a website to fail and learn the key strategies for design, SEO, and maintenance that lead to business growth.
+                    </p>
+                    <span class="font-semibold text-blue-600 group-hover:underline">Read Article &rarr;</span>
+                </div>
+            </a>
+
+            <!-- Card for "ড্রেজার ও বলগেট ব্যবসায়ীদের জন্য ঝগড়াবিহীন হিসাব সফটওয়্যার" -->
+            <a href="dredger-boulder-hisab-software.html" class="group block bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <!-- Thumbnail Image -->
+                <div class="h-48 overflow-hidden">
+                    <img src="dredgermobileviewui.png" alt="ড্রেজার সফটওয়্যার মোবাইল ভিউ - ঝগড়াবিহীন হিসাব" class="w-full h-full object-cover">
+                </div>
+                <!-- Card Content -->
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                        ড্রেজার ও বলগেট ব্যবসায়ীদের জন্য ঝগড়াবিহীন হিসাব সফটওয়্যার
+                    </h3>
+                    <p class="text-gray-600 text-base mb-4">
+                        ড্রেজার ও বলগেট ব্যবসায়ীদের জন্য সহজ হিসাব সফটওয়্যার যা এক ক্লিকে Net Payable বের করে দেয় এবং থার্মাল প্রিন্টারে স্লিপ প্রিন্ট করে। মোবাইলেই দ্রুত চালান বানান ও SMS পাঠান।
+                    </p>
+                    <span class="font-semibold text-blue-600 group-hover:underline">আর্টিকেল পড়ুন &rarr;</span>
+                </div>
+            </a>
+
+            <!-- Card for "Ecommerce Website Development Services for US Businesses" (Static HTML Version) -->
+            <a href="engineering-digital-assets-for-founders.html" class="group block bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <!-- Thumbnail Image -->
+                <div class="h-48 overflow-hidden">
+                    <img src="usaecommercead.png" alt="Ecommerce Website Development" class="w-full h-full object-cover">
+                </div>
+                <!-- Card Content -->
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                        Ecommerce Website Development Services for US Businesses
+                    </h3>
+                    <p class="text-gray-600 text-base mb-4">
+                        Professional ecommerce website development services for US businesses. Custom online stores, POS integration, and digital solutions to grow your sales.
+                    </p>
+                    <span class="font-semibold text-blue-600 group-hover:underline">Read Article &rarr;</span>
+                </div>
+            </a>
+
+            <!-- Card for "Beyond the Search Bar: Why We Built SellQuick to Fix the Facebook Chaos" -->
+            <a href="sellquick-beyond-search-bar.html" class="group block bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                <!-- Thumbnail Image (AI-generated placeholder) -->
+                <div class="h-48 overflow-hidden">
+                    <img src="sellquickblog.jpg" alt="SellQuick Market Equilibrium Engine" class="w-full h-full object-cover">
+                </div>
+                <!-- Card Content -->
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                        Beyond the Search Bar: Why We Built SellQuick to Fix the "Facebook Chaos"
+                    </h3>
+                    <p class="text-gray-600 text-base mb-4">
+                        How SellQuick solves the Facebook Group chaos with market equilibrium logic, rotation algorithms, and peer-to-peer vouching for local businesses.
                     </p>
                     <span class="font-semibold text-blue-600 group-hover:underline">Read Article &rarr;</span>
                 </div>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Hello Kate! Prototype Review & Improvement Plan | Labinitial</title>
+    <meta name="description" content="Review of the current prototype with video and screenshots. Let's discuss how we can improve and build it exactly as needed.">
+    <meta name="author" content="Labinitial">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Hello Kate! Prototype Review & Improvement Plan | Labinitial">
+    <meta property="og:description" content="Review of the current prototype with video and screenshots. Let's discuss how we can improve and build it exactly as needed.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://labinitial.com/hello-kate-prototype-improvement.html">
+    <meta property="og:image" content="https://labinitial.com/blog-images/job1.png">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hello Kate! Prototype Review & Improvement Plan | Labinitial">
+    <meta name="twitter:description" content="Review of the current prototype with video and screenshots. Let's discuss how we can improve and build it exactly as needed.">
+    <meta name="twitter:image" content="https://labinitial.com/blog-images/job1.png">
+
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://labinitial.com/hello-kate-prototype-improvement.html">
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1991033075089238');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1991033075089238&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <link href="/output.css" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+    <!-- Dropdown Menu Fix -->
+    <style>
+        /* Fix for dropdown menu gap issue */
+        .dropdown-container {
+            position: relative;
+        }
+        
+        .dropdown-container .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+        
+        .dropdown-container:hover .dropdown-menu,
+        .dropdown-container .dropdown-menu:hover {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            transition-delay: 0.1s;
+        }
+        
+        /* Add invisible padding between button and dropdown */
+        .dropdown-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+            z-index: 49;
+        }
+        
+        /* Ensure dropdown stays visible when hovering over it */
+        .dropdown-menu {
+            margin-top: 8px !important;
+        }
+
+        /* Fix CTA button text cut-off */
+        .cta-button-fix {
+            padding-top: 1.25rem !important;
+            padding-bottom: 1.25rem !important;
+            line-height: 1.5 !important;
+        }
+        @media (min-width: 768px) {
+            .cta-button-fix {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+        }
+
+        /* Custom styles for image grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 2rem 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+<!-- Header -->
+<header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4 md:py-6">
+            <a href="/" class="flex items-center">
+                <h1 class="text-xl md:text-2xl font-bold text-gray-900">Labinitial</h1>
+            </a>
+                            <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition duration-200">Services</a>
+                    <a href="journals.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Journals</a>
+                    <div class="relative group dropdown-container">
+                        <button class="text-gray-600 hover:text-gray-900 transition duration-200 flex items-center">
+                            Softwares
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-50 dropdown-menu">
+                            <a href="https://easypos.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Labinitial POS</a>
+                            <a href="https://dredgerapp.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Dredger Accounting Software</a>
+                            <a href="https://sellquick.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">SellQuick</a>
+                            <a href="https://quicksell.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">QuickSell</a>
+</div>
+                    </div>
+                    <a href="about.html" class="text-gray-600 hover:text-gray-900 transition duration-200">About</a>
+                    <a href="payments.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Pay</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Contact</a>
+                    <button onclick="openAdminPanel()" class="text-gray-600 hover:text-gray-900 transition duration-200">Admin</button>
+                </nav>
+        </div>
+    </div>
+</header>
+
+<!-- Main Article Content -->
+<main class="py-12 md:py-20 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <article class="prose prose-lg lg:prose-xl mx-auto">
+
+            <!-- Hero Banner -->
+            <div class="relative aspect-[2.55] bg-black flex items-center justify-center -mx-4 sm:-mx-6 lg:-mx-8 mb-8">
+                <img src="blog-images/job1.png" alt="Prototype Screenshot" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/20"></div>
+            </div>
+            
+            <h1 class="text-3xl md:text-5xl lg:text-7xl font-black leading-[1.1] tracking-tighter mb-4 md:mb-8 text-center mt-8">
+                Hello Kate! So this is the current prototype that needs improvement
+            </h1>
+            <div class="flex items-center justify-center gap-4 md:gap-6 text-gray-500 text-[10px] md:text-xs font-black uppercase tracking-widest mb-8">
+                <span>By Labinitial Engineering</span>
+                <span class="w-1 md:w-1.5 h-1 md:h-1.5 bg-indigo-500 rounded-full"></span>
+                <span>January 2026</span>
+            </div>
+
+            <!-- Introductory Section -->
+            <section class="space-y-6 mt-8">
+                <p class="first-letter:text-5xl md:first-letter:text-7xl first-letter:font-black first-letter:mr-2 md:first-letter:mr-3 first-letter:float-left first-letter:text-black">
+                    We need to modify it a lot. Here is the video walkthrough of the current prototype:
+                </p>
+
+                <!-- YouTube Video Embed -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/ktjUJuwP31Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+
+                <p>
+                    The video shows the current state of the prototype. Below are screenshots (mobile screenshots) that provide more detail:
+                </p>
+
+                <!-- Image Grid -->
+                <div class="image-grid">
+                    <div>
+                        <img src="blog-images/job1.png" alt="Prototype Screenshot 1">
+                        <p class="text-center text-sm text-gray-500 mt-2">Job 1 - Mobile Screenshot</p>
+                    </div>
+                    <div>
+                        <img src="blog-images/job2.png" alt="Prototype Screenshot 2">
+                        <p class="text-center text-sm text-gray-500 mt-2">Job 2 - Mobile Screenshot</p>
+                    </div>
+                    <div>
+                        <img src="blog-images/job3.png" alt="Prototype Screenshot 3">
+                        <p class="text-center text-sm text-gray-500 mt-2">Job 3 - Mobile Screenshot</p>
+                    </div>
+                    <div>
+                        <img src="blog-images/job4.png" alt="Prototype Screenshot 4">
+                        <p class="text-center text-sm text-gray-500 mt-2">Job 4 - Mobile Screenshot</p>
+                    </div>
+                    <div>
+                        <img src="blog-images/job5.png" alt="Prototype Screenshot 5">
+                        <p class="text-center text-sm text-gray-500 mt-2">Job 5 - Mobile Screenshot</p>
+                    </div>
+                </div>
+
+                <p>
+                    Could we talk or discuss to better understand the situation? I will exactly build it that way.
+                </p>
+
+                <!-- CTA Section -->
+                <div class="mt-20 md:mt-32 border-t-4 md:border-t-8 border-black pt-16 md:pt-24 space-y-12 md:space-y-16">
+                    <div class="max-w-2xl">
+                        <h2 class="text-3xl md:text-6xl font-black text-black tracking-tighter leading-[1] md:leading-[0.9] mb-4 md:mb-8">
+                            Let's Discuss Your Prototype
+                        </h2>
+                        <p class="text-lg md:text-2xl text-slate-500 font-bold leading-relaxed mb-6 md:mb-10">
+                            Contact us to schedule a detailed discussion. We'll review the prototype together and plan the improvements needed to build it exactly as you envision.
+                        </p>
+                    </div>
+
+                    <div class="bg-black text-white p-8 md:p-20 rounded-[2rem] md:rounded-[4rem] text-center shadow-2xl shadow-black/30">
+                        <h4 class="text-3xl md:text-5xl font-black mb-4 md:mb-6 tracking-tighter">Ready to Improve Your Prototype?</h4>
+                        <p class="text-white/60 mb-8 md:mb-12 text-base md:text-xl max-w-xl mx-auto font-medium">
+                            Get in touch with our engineering team to discuss your project in detail.
+                        </p>
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
+                            <a href="index.html#contactFormSection" class="inline-block group relative w-full sm:w-auto px-8 md:px-12 py-5 md:py-6 bg-white text-black rounded-xl md:rounded-2xl font-black uppercase tracking-widest hover:bg-indigo-600 hover:text-white transition-all overflow-hidden text-xs md:text-sm cta-button-fix">
+                                <span class="relative z-10">Contact Us Now</span>
+                                <div class="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            </a>
+                            <a href="https://wa.me/8801842701601" target="_blank" class="inline-block group relative w-full sm:w-auto px-8 md:px-12 py-5 md:py-6 bg-green-600 text-white rounded-xl md:rounded-2xl font-black uppercase tracking-widest hover:bg-green-700 transition-all overflow-hidden text-xs md:text-sm cta-button-fix">
+                                <span class="relative z-10">Chat on WhatsApp</span>
+                                <div class="absolute inset-0 bg-green-800 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            </a>
+                        </div>
+                        <p class="mt-6 md:mt-8 text-white/40 text-[10px] md:text-sm font-bold uppercase tracking-widest">
+                            Free Consultation • No Obligation
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p>&copy; 2025 Labinitial - Software Development Company. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>

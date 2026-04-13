@@ -28,6 +28,47 @@
     <link href="/output.css" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js" defer></script>
+    <!-- Dropdown Menu Fix -->
+    <style>
+        /* Fix for dropdown menu gap issue */
+        .dropdown-container {
+            position: relative;
+        }
+        
+        .dropdown-container .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+        
+        .dropdown-container:hover .dropdown-menu,
+        .dropdown-container .dropdown-menu:hover {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            transition-delay: 0.1s;
+        }
+        
+        /* Add invisible padding between button and dropdown */
+        .dropdown-container::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: transparent;
+            z-index: 49;
+        }
+        
+        /* Ensure dropdown stays visible when hovering over it */
+        .dropdown-menu {
+            margin-top: 8px !important;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
 <!-- Header -->
@@ -37,12 +78,28 @@
             <a href="/" class="flex items-center">
                 <h1 class="text-xl md:text-2xl font-bold text-gray-900">Labinitial</h1>
             </a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="/#services" class="text-gray-600 hover:text-gray-900 transition duration-200">Services</a>
-                <a href="/about.html" class="text-gray-600 hover:text-gray-900 transition duration-200">About</a>
-                <a href="/payments.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Pay</a>
-                <a href="/contact.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Contact</a>
-            </nav>
+                            <nav class="hidden md:flex space-x-8">
+                    <a href="index.html#services" class="text-gray-600 hover:text-gray-900 transition duration-200">Services</a>
+                    <a href="journals.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Journals</a>
+                    <div class="relative group dropdown-container">
+                        <button class="text-gray-600 hover:text-gray-900 transition duration-200 flex items-center">
+                            Softwares
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg mt-2 py-2 w-48 z-50 dropdown-menu">
+                            <a href="https://easypos.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Labinitial POS</a>
+                            <a href="https://dredgerapp.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">Dredger Accounting Software</a>
+                            <a href="https://sellquick.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">SellQuick</a>
+                            <a href="https://quicksell.labinitial.com" target="_blank" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition duration-200">QuickSell</a>
+</div>
+                    </div>
+                    <a href="about.html" class="text-gray-600 hover:text-gray-900 transition duration-200">About</a>
+                    <a href="payments.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Pay</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-gray-900 transition duration-200">Contact</a>
+                    <button onclick="openAdminPanel()" class="text-gray-600 hover:text-gray-900 transition duration-200">Admin</button>
+                </nav>
         </div>
     </div>
 </header>
@@ -148,7 +205,7 @@
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">Let's Talk About Your Project</h3>
                 <div class="prose prose-lg">
                     <p class="mb-6">You can also check though online tools and consultations from an expert whether your website is doing great or need improvements based on my discussed points.</p>
-                    <p>I am here to help you make these decisions. I offer a <a href="/#contactForm"><strong class="text-blue-600">free 20-minute consultation</strong></a> to understand your business needs, review your existing website, and suggest what, if anything, needs to be fixed. You can schedule this by visiting the contact section at <code>www.labinitial.com</code>.</p>
+                    <p>I am here to help you make these decisions. I offer a <a href="/#contactForm"><strong class="text-blue-600">free 20-minute consultation</strong></a> to understand your business needs, review your existing website, and suggest what, if anything, needs to be fixed. You can schedule this by visiting the contact section at <code>labinitial.com</code>.</p>
                     <p>I will also guide you on how to plan your SEO. You need an expert who understands keyword research, can examine your current site traffic, and analyze trends to estimate your website's potential. We can identify unnecessary pages or content that might be hurting your ranking. For this guidance, <strong>I don't ask for any payment</strong>—just a heartfelt thank you if you find it helpful.</p>
                 </div>
             </section>
