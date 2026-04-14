@@ -1017,6 +1017,10 @@ video {
   height: 100%;
 }
 
+.max-h-24 {
+  max-height: 6rem;
+}
+
 .max-h-32 {
   max-height: 8rem;
 }
@@ -1176,6 +1180,10 @@ video {
 
 .max-w-\[600px\] {
   max-width: 600px;
+}
+
+.max-w-full {
+  max-width: 100%;
 }
 
 .max-w-lg {
@@ -1814,10 +1822,6 @@ video {
 .bg-black {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
-}
-
-.bg-black\/10 {
-  background-color: rgb(0 0 0 / 0.1);
 }
 
 .bg-black\/20 {
