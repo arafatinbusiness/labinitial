@@ -14,9 +14,9 @@
     "tailwindcss": "^3.4.4"
   },
   "scripts": {
-    "build": "tailwindcss -i ./css/input.css -o ./public/output.css",
-    "dev": "tailwindcss -i ./css/input.css -o ./public/output.css --watch",
-    "serve": "cd public && python3 -m http.server 8080",
+    "build": "tailwindcss -i ./css/input.css -o ./output.css && cp output.css public/ && cp *.html sitemap.xml robots.txt public/ && cp -r blog-images public/ && cp -r public/partner-logos . && cp *.png *.jpg *.jpeg *.gif *.svg public/ 2>/dev/null || true",
+    "dev": "tailwindcss -i ./css/input.css -o ./output.css --watch",
+    "serve": "python3 -m http.server 8080",
     "start": "concurrently \"npm run dev\" \"npm run serve\""
   },
   "repository": {
