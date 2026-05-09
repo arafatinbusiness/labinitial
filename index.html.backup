@@ -44,7 +44,7 @@
             "@type": "ContactPoint",
             "telephone": "+8801842701601",
             "contactType": "customer service",
-            "email": "arafatinbusiness@gmail.com",
+            "email": "support@labinitial.com",
             "availableLanguage": ["English", "Bengali"]
           },
           "sameAs": [
@@ -109,7 +109,7 @@
         "@type": "ServiceChannel",
         "serviceUrl": "https://labinitial.com",
         "servicePhone": "+8801842701601",
-        "serviceEmail": "arafatinbusiness@gmail.com"
+        "serviceEmail": "support@labinitial.com"
       },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -476,11 +476,11 @@
                             <div class="flex flex-col items-center justify-center space-y-2 sm:space-y-0 sm:flex-row sm:space-x-4">
                                 <span class="text-white font-semibold text-base">Prefer to talk directly?</span>
                                 <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4">
-                                    <a href="mailto:arafatinbusiness@gmail.com" class="flex items-center space-x-2 text-white hover:text-blue-300 transition duration-200">
+                                    <a href="mailto:support@labinitial.com" class="flex items-center space-x-2 text-white hover:text-blue-300 transition duration-200">
                                         <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                         </svg>
-                                        <span class="font-medium text-sm whitespace-nowrap">arafatinbusiness@gmail.com</span>
+                                        <span class="font-medium text-sm whitespace-nowrap">support@labinitial.com</span>
                                     </a>
                                     <span class="text-gray-400 text-sm hidden sm:inline">|</span>
                                     <a href="https://wa.me/8801842701601" target="_blank" class="flex items-center space-x-2 text-white hover:text-green-300 transition duration-200">
@@ -1921,7 +1921,7 @@
             },
             'contact': {
                 keywords: ['contact', 'email', 'reach', 'get in touch', 'phone', 'whatsapp', 'message', 'chat'],
-                response: "You can reach us through multiple channels: Email: arafatinbusiness@gmail.com, WhatsApp: +880 1842-701601, or use the contact form on our website. We typically respond within 24 hours and can schedule a free consultation to discuss your project requirements. For quick questions, WhatsApp is often the fastest way to get in touch."
+                response: "You can reach us through multiple channels: Email: support@labinitial.com, WhatsApp: +880 1842-701601, or use the contact form on our website. We typically respond within 24 hours and can schedule a free consultation to discuss your project requirements. For quick questions, WhatsApp is often the fastest way to get in touch."
             },
             'portfolio': {
                 keywords: ['portfolio', 'work', 'projects', 'case study', 'examples'],
@@ -1994,7 +1994,7 @@
                                 <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                 </svg>
-                                <span class="text-gray-700">arafatinbusiness@gmail.com</span>
+                                <span class="text-gray-700">support@labinitial.com</span>
                             </div>
                             <div class="flex items-center space-x-3">
                                 <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">

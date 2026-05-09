@@ -100,4 +100,4 @@ If you encounter any issues:
 ---
 **Last Updated**: January 6, 2026  
 **For**: Labinitial POS App Launch  
-**Contact**: arafatinbusiness@gmail.com
+**Contact**: support@labinitial.com
